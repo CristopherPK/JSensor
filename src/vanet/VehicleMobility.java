@@ -4,6 +4,7 @@ import java.util.Hashtable;
 
 import jsensor.nodes.Node;
 import jsensor.nodes.models.MobilityModel;
+import jsensor.runtime.Jsensor;
 import jsensor.utils.Position;
 
 public class VehicleMobility extends MobilityModel {
@@ -64,21 +65,85 @@ public class VehicleMobility extends MobilityModel {
 		nodes.put(n.getID(), direction);
 		
     	switch(direction){
-		case 0:{ //System.out.println(n.getPosition().getPosX()+","+ n.getPosition().getPosY() + 1); 
-		return new Position(n.getPosition().getPosX(), n.getPosition().getPosY() + 1);}
-		case 1:{ //System.out.println(n.getPosition().getPosX() + 1 +","+ n.getPosition().getPosY()); 
-		return new Position(n.getPosition().getPosX() + 1, n.getPosition().getPosY());}
-		case 2:{ //System.out.println((n.getPosition().getPosX()) +","+ (n.getPosition().getPosY() - 1)); 
-		return new Position(n.getPosition().getPosX(), n.getPosition().getPosY() - 1);}
+    	case 0:{ //System.out.println((n.getPosition().getPosX()) +","+ (n.getPosition().getPosY() - 1)); 
+    		return new Position(n.getPosition().getPosX(), n.getPosition().getPosY() - 1);}
+		case 1:{ //System.out.println(n.getPosition().getPosX()+","+ n.getPosition().getPosY() + 1); 
+			return new Position(n.getPosition().getPosX(), n.getPosition().getPosY() + 1);}
+		case 2:{ //System.out.println(n.getPosition().getPosX() + 1 +","+ n.getPosition().getPosY()); 
+			return new Position(n.getPosition().getPosX() + 1, n.getPosition().getPosY());}
 		case 3:{ //System.out.println(n.getPosition().getPosX() - 1 +","+ n.getPosition().getPosY()); 
-		return new Position(n.getPosition().getPosX() - 1, n.getPosition().getPosY());}
+			return new Position(n.getPosition().getPosX() - 1, n.getPosition().getPosY());}
 	}
 	return null;
 		
 	}
 
 	private int needChange(Node n, int x, int y, int direction) {
-		// TODO Auto-generated method stub
+		// check if the position need to change.
+		if(x == 0){
+			if(direction != 3)
+				return direction;
+			
+			if(y == 0){
+				if(n.getRandom().nextDouble() < 0.5){
+					direction = 1;
+				} else {
+					direction = 2;
+				}
+			} else if(y == Jsensor.getDimY()){
+				if(n.getRandom().nextDouble() < 0.5){
+					direction = 0;
+				} else {
+					direction = 1;
+				}
+			} else {
+				direction = n.getRandom().nextInt(2);
+			}
+			
+		} else if(x == Jsensor.getDimX()){
+			if(direction != 0)
+				return direction;
+			
+			if(y == 0){
+				if(n.getRandom().nextDouble() < 0.5){
+					direction = 3;
+				} else {
+					direction = 2;
+				}
+			} else if(y == Jsensor.getDimY()){
+				if(n.getRandom().nextDouble() < 0.5){
+					direction = 0;
+				} else {
+					direction = 3;
+				}
+			} else {
+				if(n.getRandom().nextDouble() < 0.33){
+					direction = 0;
+				} else if(n.getRandom().nextDouble() > 0.66){
+					direction = 2;
+				} else {
+					direction = 3;
+				}
+			}
+			
+		}
+		
+		if(y == 0){
+			if(direction != 0)
+				return direction;
+			
+			direction = 1 + n.getRandom().nextInt(2);
+			
+		} else if(y == Jsensor.getDimY()){
+			if(n.getRandom().nextDouble() < 0.33){
+				direction = 0;
+			} else if(n.getRandom().nextDouble() > 0.66){
+				direction = 1;
+			} else {
+				direction = 3;
+			}
+		}
+		
 		return 0;
 	}
 

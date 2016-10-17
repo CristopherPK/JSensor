@@ -2,7 +2,7 @@ package vanet;
 
 import jsensor.nodes.monitoring.DefaultJsensorCell;
 
-public class Scenario extends DefaultJsensorCell {
+public class Cell extends DefaultJsensorCell {
 	private int nBlocks;
 
 	public int getnBlocks() {
@@ -13,14 +13,14 @@ public class Scenario extends DefaultJsensorCell {
 		this.nBlocks = nBlocks;
 	}
 
-	public Scenario(int nBlocks) {
+	public Cell(int nBlocks) {
 		super();
 		this.nBlocks = nBlocks;
 	}
 	
 	@Override
 	public DefaultJsensorCell clone(){
-		return new Scenario(this.nBlocks);
+		return new Cell(this.nBlocks);
 	}
 	
 }
