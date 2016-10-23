@@ -1,0 +1,16 @@
+Oct 22, 2016 7:57:04 PM jsensor.Main run
+SEVERE: null
+java.lang.NullPointerException
+	at projects.vanet.CustomGlobal.postRound(CustomGlobal.java:19)
+	at jsensor.runtime.AssynchronousRuntime.run(AssynchronousRuntime.java:248)
+	at jsensor.Main.run(Main.java:205)
+	at jsensor.Main.main(Main.java:79)
+
+Oct 22, 2016 7:57:15 PM jsensor.Main run
+SEVERE: null
+java.lang.NullPointerException
+	at projects.vanet.CustomGlobal.postRound(CustomGlobal.java:19)
+	at jsensor.runtime.AssynchronousRuntime.run(AssynchronousRuntime.java:248)
+	at jsensor.Main.run(Main.java:205)
+	at jsensor.Main.main(Main.java:79)
+

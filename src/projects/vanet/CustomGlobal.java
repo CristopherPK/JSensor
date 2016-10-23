@@ -1,6 +1,8 @@
 package projects.vanet;
 
+import jsensor.nodes.Node;
 import jsensor.runtime.AbsCustomGlobal;
+import jsensor.runtime.Jsensor;
 
 public class CustomGlobal extends AbsCustomGlobal {
 
@@ -12,26 +14,25 @@ public class CustomGlobal extends AbsCustomGlobal {
 
 	@Override
 	public void postRound() {
-		// TODO Auto-generated method stub
-
+		for(int i = 1; i <= Jsensor.getNumNodes(); i++){
+			Node n = Jsensor.getNodeByID(i);
+			Jsensor.log(Jsensor.currentTime + " " + n.getID() + " " + n.getPosition().getPosX() 
+					    + " " + n.getPosition().getPosY());
+		}
 	}
 
 	@Override
 	public void postRun() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void preRound() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void preRun() {
-		// TODO Auto-generated method stub
-
+		System.out.println("simulation started.");
 	}
 
 }

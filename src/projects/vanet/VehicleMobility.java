@@ -44,19 +44,17 @@ public class VehicleMobility extends MobilityModel {
 				// probability of remaining stopped.
 				if(n.getRandom().nextDouble() < 0.4){
 					return n.getPosition();
-				} else {
-					if(n.getRandom().nextDouble() < 0.2){
-						nodes.put(n.getID(), 4);
-						return n.getPosition();
-					}
+				} 
+			} else {
+				if(n.getRandom().nextDouble() < 0.2){
+					nodes.put(n.getID(), 4);
+					return n.getPosition();
 				}
-				
-				if(n.getRandom().nextDouble() > 0.4){
-					do{
-						newDirection = n.getRandom().nextInt(4);
-					} while(direction == newDirection);
-				}
-				
+			}
+			if(n.getRandom().nextDouble() > 0.4){
+				do{
+					newDirection = n.getRandom().nextInt(4);
+				} while(direction == newDirection);
 			}
 		}
 		
@@ -68,22 +66,20 @@ public class VehicleMobility extends MobilityModel {
     	case 0:{ //System.out.println((n.getPosition().getPosX()) +","+ (n.getPosition().getPosY() - 1)); 
     		return new Position(n.getPosition().getPosX(), n.getPosition().getPosY() - 1);}
 		case 1:{ //System.out.println(n.getPosition().getPosX()+","+ n.getPosition().getPosY() + 1); 
-			return new Position(n.getPosition().getPosX(), n.getPosition().getPosY() + 1);}
-		case 2:{ //System.out.println(n.getPosition().getPosX() + 1 +","+ n.getPosition().getPosY()); 
 			return new Position(n.getPosition().getPosX() + 1, n.getPosition().getPosY());}
+		case 2:{ //System.out.println(n.getPosition().getPosX() + 1 +","+ n.getPosition().getPosY()); 
+			return new Position(n.getPosition().getPosX(), n.getPosition().getPosY() + 1);}
 		case 3:{ //System.out.println(n.getPosition().getPosX() - 1 +","+ n.getPosition().getPosY()); 
 			return new Position(n.getPosition().getPosX() - 1, n.getPosition().getPosY());}
-	}
-	return null;
+    	}
+    	
+    	return null;
 		
 	}
 
 	private int needChange(Node n, int x, int y, int direction) {
 		// check if the position need to change.
 		if(x == 0){
-			if(direction != 3)
-				return direction;
-			
 			if(y == 0){
 				if(n.getRandom().nextDouble() < 0.5){
 					direction = 1;
@@ -100,10 +96,7 @@ public class VehicleMobility extends MobilityModel {
 				direction = n.getRandom().nextInt(2);
 			}
 			
-		} else if(x == Jsensor.getDimX()){
-			if(direction != 0)
-				return direction;
-			
+		} else if(x == Jsensor.getDimX()){			
 			if(y == 0){
 				if(n.getRandom().nextDouble() < 0.5){
 					direction = 3;
@@ -129,9 +122,6 @@ public class VehicleMobility extends MobilityModel {
 		}
 		
 		if(y == 0){
-			if(direction != 0)
-				return direction;
-			
 			direction = 1 + n.getRandom().nextInt(2);
 			
 		} else if(y == Jsensor.getDimY()){
@@ -144,7 +134,7 @@ public class VehicleMobility extends MobilityModel {
 			}
 		}
 		
-		return 0;
+		return direction;
 	}
 
 }

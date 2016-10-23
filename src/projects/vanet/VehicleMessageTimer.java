@@ -30,17 +30,20 @@ public class VehicleMessageTimer extends TimerEvent {
 			m.setMessage("This is message number: " + this.node.getChunk() +
 						"created by the node: " + node.getID() + "path");
 			
-			Jsensor.log("* time: " + Jsensor.currentTime + " nodeID: " +
+			/*Jsensor.log("time: " + Jsensor.currentTime + " nodeID: " +
                     	this.node.getID() + " send to: " + n.getID() +
-                    	" by RSU: " + aux.getRSU());
+                    	" by RSU: " + aux.getRSU());*/
+//			Jsensor.log(Jsensor.currentTime + " " +  
+//						this.node.getID() + " " + n.getID() +
+//						" " + aux.getRSU());
 			
 			this.node.unicast(m, Jsensor.getNodeByID(aux.getRSU()));
-		} else {
+		} /*else {
 			Jsensor.log("[No signal] time: " + Jsensor.currentTime + 
 						this.node.getID());
 			Jsensor.log("[No signal] position: " + this.node.getPosition().getPosX() + 
 						"," + this.node.getPosition().getPosY());
-		}
+		}*/
 	}
 
 }
