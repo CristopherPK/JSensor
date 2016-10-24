@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import jsensor.nodes.Node;
 import jsensor.nodes.messages.Inbox;
 import jsensor.nodes.messages.Message;
-import projects.MobilePhone_AODV.Messages.SMSMessage;
 
 public class RSU extends Node {
 	
@@ -22,12 +21,12 @@ public class RSU extends Node {
 		
 		while(inbox.hasMoreMessages()){
 			Message m = inbox.getNextMessage();
-			if(m instanceof SMSMessage){
-				if(this.messageIDs.contains(((SMSMessage)m).getID())){
+			if(m instanceof VehicleMessage){
+				if(this.messageIDs.contains(((VehicleMessage)m).getID())){
 					continue;
 				} else {
-					this.messageIDs.add(((SMSMessage)m).getID());
-					((SMSMessage)m).setMessage(((SMSMessage)m).getMessage().concat(Integer.toString(this.ID)));
+					this.messageIDs.add(((VehicleMessage)m).getID());
+					((VehicleMessage)m).setMessage(((VehicleMessage)m).getMessage().concat(Integer.toString(this.ID)));
 					this.multicast(m);
 				}
 			}

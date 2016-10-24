@@ -14,11 +14,11 @@ public class CustomGlobal extends AbsCustomGlobal {
 
 	@Override
 	public void postRound() {
-		for(int i = 1; i <= Jsensor.getNumNodes(); i++){
-			Node n = Jsensor.getNodeByID(i);
-			Jsensor.log(Jsensor.currentTime + " " + n.getID() + " " + n.getPosition().getPosX() 
-					    + " " + n.getPosition().getPosY());
-		}
+//		for(int i = 1; i <= Jsensor.getNumNodes(); i++){
+//			Node n = Jsensor.getNodeByID(i);
+//			Jsensor.log(Jsensor.currentTime + " " + n.getID() + " " + n.getPosition().getPosX() 
+//					    + " " + n.getPosition().getPosY());
+//		}
 	}
 
 	@Override

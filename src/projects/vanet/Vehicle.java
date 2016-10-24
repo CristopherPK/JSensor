@@ -25,9 +25,9 @@ public class Vehicle extends Node {
 				}
 				
 				if(((VehicleMessage)m).getDestination().getID() == this.ID){
-					Jsensor.log("time: " + Jsensor.currentTime + "NodeID: " + this.ID + 
-								"received from: " + ((VehicleMessage)m).getSender().getID() +
-								"hops: " + ((VehicleMessage)m).getHops());
+//					Jsensor.log("time: " + Jsensor.currentTime + " NodeID: " + this.ID + 
+//								" received from: " + ((VehicleMessage)m).getSender().getID() +
+//								" hops: " + ((VehicleMessage)m).getHops());
 					
 					if(this.getRandom().nextDouble() < 0.5){
 						int time = 1 + this.getRandom().nextInt(100);
@@ -46,7 +46,7 @@ public class Vehicle extends Node {
 		this.messageIDs = new LinkedList<Long>();
 		this.rsuID = -1;
 		
-		if(this.getRandom().nextDouble() < 0.4){
+		if(this.getRandom().nextDouble() < 0.8){
 			int time = 10 + this.getRandom().nextInt(100);
 			VehicleMessageTimer st = new VehicleMessageTimer();
 			st.startRelative(time, this);
@@ -64,7 +64,6 @@ public class Vehicle extends Node {
         if(this.getNeighbours().getNodesList().isEmpty())
             rsuID = -1;
         else
-        	// TODO: Verify this operation.
             rsuID = this.getNeighbours().getNodesList().first().getID();
     }
 	
