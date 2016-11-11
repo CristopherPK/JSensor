@@ -6,6 +6,8 @@ import jsensor.runtime.Jsensor;
 
 public class CustomGlobal extends AbsCustomGlobal {
 
+	boolean flag = false;
+	
 	@Override
 	public boolean hasTerminated() {
 		// TODO Auto-generated method stub
@@ -14,15 +16,16 @@ public class CustomGlobal extends AbsCustomGlobal {
 
 	@Override
 	public void postRound() {
-//		for(int i = 1; i <= Jsensor.getNumNodes(); i++){
-//			Node n = Jsensor.getNodeByID(i);
-//			Jsensor.log(Jsensor.currentTime + " " + n.getID() + " " + n.getPosition().getPosX() 
-//					    + " " + n.getPosition().getPosY());
-//		}
+		for(int i = 101; i <= Jsensor.getNumNodes(); i++){
+			Node n = Jsensor.getNodeByID(i);
+			VehicleLog.rsuLog(n.getID() + " " + n.getPosition().getPosX() 
+				    + " " + n.getPosition().getPosY());
+		}
 	}
 
 	@Override
 	public void postRun() {
+		VehicleLog.close();
 	}
 
 	@Override
@@ -32,7 +35,7 @@ public class CustomGlobal extends AbsCustomGlobal {
 
 	@Override
 	public void preRun() {
-		System.out.println("simulation started.");
+		VehicleLog.initialize();
 	}
 
 }

@@ -46,13 +46,13 @@ public class Vehicle extends Node {
 		this.messageIDs = new LinkedList<Long>();
 		this.rsuID = -1;
 		
-		if(this.getRandom().nextDouble() < 0.8){
+		//if(this.getRandom().nextDouble() < 0.8){
 			int time = 10 + this.getRandom().nextInt(100);
 			VehicleMessageTimer st = new VehicleMessageTimer();
 			st.startRelative(time, this);
 			VehicleMobility ct = new VehicleMobility();
 			ct.start(this, 1, 5000, 10);
-		}
+		//}
 		
 	}
 	

@@ -33,6 +33,8 @@ public class VehicleMobility extends MobilityModel {
 		int x = n.getPosition().getPosX();
 		int y = n.getPosition().getPosY();
 		
+		VehicleLog.traceLog(Jsensor.currentTime + " " + n.getID() + " " + x + " " + y);
+		
 		int direction, newDirection = 0;
 		
 		if(nodes.containsKey(n.getID())){

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import jsensor.nodes.Node;
 import jsensor.nodes.messages.Inbox;
 import jsensor.nodes.messages.Message;
+import jsensor.runtime.Jsensor;
 
 public class RSU extends Node {
 	
@@ -38,7 +39,7 @@ public class RSU extends Node {
 
 	@Override
 	public void onCreation() {
-		this.messageIDs = new LinkedList<Long>();	
+		this.messageIDs = new LinkedList<Long>();
 	}
 
 }
